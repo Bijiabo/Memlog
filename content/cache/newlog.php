@@ -1,0 +1,1 @@
+<?php exit;//a:5:{i:0;a:2:{s:3:"gid";i:15;s:5:"title";s:12:"啥意思死";}i:1;a:2:{s:3:"gid";i:14;s:5:"title";s:32:"手机测试一下markdown语法";}i:2;a:2:{s:3:"gid";i:13;s:5:"title";s:21:"这样感觉还不错";}i:3;a:2:{s:3:"gid";i:12;s:5:"title";s:21:"文章测试一下吧";}i:4;a:2:{s:3:"gid";i:10;s:5:"title";s:4:"test";}}
