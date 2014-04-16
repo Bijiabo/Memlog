@@ -7,7 +7,27 @@
 require_once 'globals.php';
 
 $Tag_Model = new Tag_Model();
-
+if(isset($_GET['active_del'])){
+    $r = array();
+    $r['success'] = '1';
+    $r['des'] = '删除标签成功';
+    echo json_encode($r);
+    exit;
+}
+if(isset($_GET['active_edit'])){
+    $r = array();
+    $r['success'] = '1';
+    $r['des'] = '修改标签成功';
+    echo json_encode($r);
+    exit;
+}
+if(isset($_GET['error'])){
+    $r = array();
+    $r['success'] = '0';
+    $r['des'] = '请选择要删除的标签';
+    echo json_encode($r);
+    exit;
+}
 if ($action == '') {
 	$tags = $Tag_Model->getTag();
 	include View::getView('header');
@@ -48,9 +68,15 @@ if ($action== 'dell_all_tag') {
 	if (!$tags) {
 		emDirect("./tag.php?error_a=1");
 	}
+//    var_dump($tags);
 	foreach ($tags as $key=>$value) {
 		$Tag_Model->deleteTag($key);
 	}
 	$CACHE->updateCache(array('tags', 'logtags'));
-	emDirect("./tag.php?active_del=1");
+//	emDirect("./tag.php?active_del=1");
+    $r = array();
+    $r['success'] = '1';
+    $r['des'] = '删除标签成功';
+    echo json_encode($r);
+    exit;
 }

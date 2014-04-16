@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="./views/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="./views/css/todc-bootstrap.min.css"/>
     <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="./views/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./views/css/main.css"/>
 <!--    <link href="./views/style/--><?php //echo Option::get('admin_style');?><!--/style.css" type=text/css rel=stylesheet>-->
 <!--    <link href="./views/css/css-main.css" type=text/css rel=stylesheet>-->
     <script type="text/javascript" src="../include/lib/js/jquery/plugin-cookie.js"></script>
+    <script src="./views/js/jquery.cookie.js"></script>
+<!--    <script src="./../include/lib/js/jquery/plugin-interface.js"></script>-->
     <script type="text/javascript" src="./views/js/common.js"></script>
     <?php doAction('adm_head');?>
 </head>
@@ -153,4 +155,5 @@ $("#menu_ext").toggle(
 		$.cookie('em_extend_ext', exClass, {expires:365});
 	  }
 );
+var tokenName = '<?php $token_cookie_name = 'EM_TOKENCOOKIE_' . md5(substr(AUTH_KEY, 16, 32) . UID);echo $token_cookie_name;?>';
 </script>

@@ -5,184 +5,232 @@
 <?php if(isset($_GET['activated'])):?><span class="actived">设置保存成功</span><?php endif;?></div>
 <div class=line></div>
 <div class="widgetpage">
-<div id="adm_widget_list">
-	<form action="widgets.php?action=setwg&wg=blogger" method="post">
-	<div class="widget-line" id="blogger">
-		<div class="widget-top">
-			<li class="widget-title">个人资料</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+<div id="adm_widget_list" class="col-md-4">
+	<form action="widgets.php?action=setwg&wg=blogger" method="post" role="form" class="form-inline">
+        <div class="panel panel-default" id="blogger">
+            <div class="panel-heading">
+                <span class="widget-act-edit widget-title">个人资料</span>
+                <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+                <span class="widget-act-add fa fa-plus pull-right"></span>
+                <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            </div>
+            <div class="panel-body form-group widget-control">
+                <input type="text" name="title" value="<?php echo $customWgTitle['blogger']; ?>" class="form-control"/>
+                <input type="submit" name="" value="更改标题" class="btn btn-primary" />
+            </div>
+        </div>
+	</form>
+	<form action="widgets.php?action=setwg&wg=calendar" method="post" class="form-inline">
+	<div class="panel panel-default" id="calendar">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">日历</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['blogger']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body form-group widget-control">
+            <input type="text" name="title" value="<?php echo $customWgTitle['calendar']; ?>" class="form-control"/>
+            <input type="submit" name="" value="更改标题" class="btn btn-primary" />
 		</div>
 	</div>
 	</form>
-	<form action="widgets.php?action=setwg&wg=calendar" method="post">
-	<div class="widget-line" id="calendar">
-		<div class="widget-top">
-			<li class="widget-title">日历</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+	<form action="widgets.php?action=setwg&wg=twitter" method="post" class="form-horizontal">
+	<div class="panel panel-default" id="twitter">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">最新微语</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['calendar']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body widget-control">
+            <div class="form-group margin0">
+                <label for="title">标题</label>
+                <input type="text" name="title" value="<?php echo $customWgTitle['twitter']; ?>" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="index_newtwnum">首页显示最新微语数</label>
+                <input maxlength="5" size="10" value="<?php echo Option::get('index_newtwnum'); ?>" name="index_newtwnum" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <input type="submit" name="" value="更改" class="btn btn-primary"/>
+            </div>
+        </div>
+	</div>
+	</form>
+	<form action="widgets.php?action=setwg&wg=tag" method="post" class="form-inline">
+	<div class="panel panel-default" id="tag">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">标签</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+		</div>
+		<div class="panel-body form-group widget-control">
+			<input type="text" name="title" value="<?php echo $customWgTitle['tag']; ?>" class="form-control"/>
+            <input type="submit" name="" value="更改标题" class="btn btn-primary" />
 		</div>
 	</div>
 	</form>
-	<form action="widgets.php?action=setwg&wg=twitter" method="post">
-	<div class="widget-line" id="twitter">
-		<div class="widget-top">
-			<li class="widget-title">最新微语</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+	<form action="widgets.php?action=setwg&wg=sort" method="post" class="form-inline">
+	<div class="panel panel-default" id="sort">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">分类</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['twitter']; ?>"  /></li>
-			<li>首页显示最新微语数</li>
-			<li><input maxlength="5" size="10" value="<?php echo Option::get('index_newtwnum'); ?>" name="index_newtwnum" /> <input type="submit" name="" value="更改" class="submit" /></li>
-		</div>
-	</div>
-	</form>
-	<form action="widgets.php?action=setwg&wg=tag" method="post">
-	<div class="widget-line" id="tag">
-		<div class="widget-top">
-			<li class="widget-title">标签</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
-		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['tag']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body form-group widget-control">
+			<input type="text" name="title" value="<?php echo $customWgTitle['sort']; ?>" class="form-control"/>
+            <input type="submit" name="" value="更改标题" class="btn btn-primary" />
 		</div>
 	</div>
 	</form>
-	<form action="widgets.php?action=setwg&wg=sort" method="post">
-	<div class="widget-line" id="sort">
-		<div class="widget-top">
-			<li class="widget-title">分类</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+	<form action="widgets.php?action=setwg&wg=archive" method="post"  class="form-inline">
+	<div class="panel panel-default" id="archive">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">存档</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['sort']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
-		</div>
-	</div>
-	</form>
-	<form action="widgets.php?action=setwg&wg=archive" method="post">
-	<div class="widget-line" id="archive">
-		<div class="widget-top">
-			<li class="widget-title">存档</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
-		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['archive']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body form-group widget-control">
+			<input type="text" name="title" value="<?php echo $customWgTitle['archive']; ?>" class="form-control"/>
+            <input type="submit" name="" value="更改标题" class="btn btn-primary" />
 		</div>
 	</div>
 	</form>
-	<form action="widgets.php?action=setwg&wg=newcomm" method="post">
-	<div class="widget-line" id="newcomm">
-		<div class="widget-top">
-			<li class="widget-title">最新评论</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+	<form action="widgets.php?action=setwg&wg=newcomm" method="post" class="form-horizontal">
+	<div class="panel panel-default" id="newcomm">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">最新评论</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['newcomm']; ?>"  /></li>
-			<li>首页最新评论数</li>
-			<li><input maxlength="5" size="10" value="<?php echo Option::get('index_comnum'); ?>" name="index_comnum" /></li>
-			<li>新近评论截取字节数</li>
-			<li><input maxlength="5" size="10" value="<?php echo Option::get('comment_subnum'); ?>" name="comment_subnum" /> <input type="submit" name="" value="更改" class="submit" /></li>
-		</div>
-	</div>
-	</form>
-	<form action="widgets.php?action=setwg&wg=newlog" method="post">
-	<div class="widget-line" id="newlog">
-		<div class="widget-top">
-			<li class="widget-title">最新文章</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
-		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['newlog']; ?>"  /></li>
-			<li>首页显示最新文章数</li>
-			<li><input maxlength="5" size="10" value="<?php echo Option::get('index_newlognum'); ?>" name="index_newlog" /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body widget-control">
+            <div class="form-group margin0">
+                <label for="title">标题</label>
+                <input type="text" name="title" value="<?php echo $customWgTitle['newcomm']; ?>" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="index_comnum">首页最新评论数</label>
+                <input maxlength="5" size="10" value="<?php echo Option::get('index_comnum'); ?>" name="index_comnum" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="comment_subnum">新近评论截取字节数</label>
+                <input maxlength="5" size="10" value="<?php echo Option::get('comment_subnum'); ?>" name="comment_subnum" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <input type="submit" name="" value="更改" class="btn btn-primary" />
+            </div>
 		</div>
 	</div>
 	</form>
-	<form action="widgets.php?action=setwg&wg=hotlog" method="post">
-	<div class="widget-line" id="hotlog">
-		<div class="widget-top">
-			<li class="widget-title">热门文章</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+	<form action="widgets.php?action=setwg&wg=newlog" method="post" class="form-horizontal">
+	<div class="panel panel-default" id="newlog">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">最新文章</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['hotlog']; ?>"  /></li>
-			<li>首页显示热门文章数</li>
-			<li><input maxlength="5" size="10" value="<?php echo Option::get('index_hotlognum'); ?>" name="index_hotlognum" /> <input type="submit" name="" value="更改" class="submit" /></li>
-		</div>
-	</div>
-	</form>
-	<form action="widgets.php?action=setwg&wg=random_log" method="post">
-	<div class="widget-line" id="random_log">
-		<div class="widget-top">
-			<li class="widget-title">随机文章</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
-		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['random_log']; ?>"  /></li>
-			<li>首页显示随机文章数</li>
-			<li><input maxlength="5" size="10" value="<?php echo Option::get('index_randlognum'); ?>" name="index_randlognum" /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body widget-control">
+            <div class="form-group margin0">
+                <label for="title">标题</label>
+                <input type="text" name="title" value="<?php echo $customWgTitle['newlog']; ?>" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="index_newlog">首页显示最新文章数</label>
+                <input maxlength="5" size="10" value="<?php echo Option::get('index_newlognum'); ?>" name="index_newlog" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <input type="submit" name="" value="更改" class="btn btn-primary" />
+            </div>
 		</div>
 	</div>
 	</form>
-	<form action="widgets.php?action=setwg&wg=link" method="post">
-	<div class="widget-line" id="link">
-		<div class="widget-top">
-			<li class="widget-title">链接</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+	<form action="widgets.php?action=setwg&wg=hotlog" method="post" class="form-horizontal">
+	<div class="panel panel-default" id="hotlog">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">热门文章</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
 		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['link']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
-		</div>
-	</div>
-	</form>
-	<form action="widgets.php?action=setwg&wg=search" method="post">
-	<div class="widget-line" id="search">
-		<div class="widget-top">
-			<li class="widget-title">搜索</li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
-		</div>
-		<div class="widget-control">
-			<li>标题</li>
-			<li><input type="text" name="title" value="<?php echo $customWgTitle['search']; ?>"  /> <input type="submit" name="" value="更改" class="submit" /></li>
+		<div class="panel-body widget-control">
+            <div class="form-group margin0">
+                <label for="title">标题</label>
+                <input type="text" name="title" value="<?php echo $customWgTitle['hotlog']; ?>" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="index_hotlognum">首页显示热门文章数</label>
+                <input maxlength="5" size="10" value="<?php echo Option::get('index_hotlognum'); ?>" name="index_hotlognum" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <input type="submit" name="" value="更改" class="btn btn-primary" />
+            </div>
 		</div>
 	</div>
 	</form>
-	<div class="wg_line">自定义组件</div>
+	<form action="widgets.php?action=setwg&wg=random_log" method="post" class="form-horizontal">
+	<div class="panel panel-default" id="random_log">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">随机文章</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+		</div>
+		<div class="panel-body widget-control">
+            <div class="form-group margin0">
+                <label for="title">标题</label>
+                <input type="text" name="title" value="<?php echo $customWgTitle['random_log']; ?>" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="index_randlognum">首页显示随机文章数</label>
+                <input maxlength="5" size="10" value="<?php echo Option::get('index_randlognum'); ?>" name="index_randlognum" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <input type="submit" name="" value="更改" class="btn btn-primary" />
+            </div>
+		</div>
+	</div>
+	</form>
+	<form action="widgets.php?action=setwg&wg=link" method="post" class="form-inline">
+	<div class="panel panel-default" id="link">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">链接</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+		</div>
+		<div class="panel-body form-group widget-control">
+			<input type="text" name="title" value="<?php echo $customWgTitle['link']; ?>" class="form-control"/>
+            <input type="submit" name="" value="更改标题" class="btn btn-primary" />
+		</div>
+	</div>
+	</form>
+	<form action="widgets.php?action=setwg&wg=search" method="post" class="form-inline">
+	<div class="panel panel-default" id="search">
+		<div class="panel-heading">
+			<span class="widget-act-edit widget-title">搜索</span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+		</div>
+		<div class="panel-body form-group widget-control">
+            <input type="text" name="title" value="<?php echo $customWgTitle['search']; ?>" class="form-control"/>
+            <input type="submit" name="" value="更改标题" class="btn btn-primary" />
+		</div>
+	</div>
+	</form>
 	<?php
 	foreach ($custom_widget as $key=>$val): 
 	preg_match("/^custom_wg_(\d+)/", $key, $matches);
 	$custom_wg_title = empty($val['title']) ? '未命名组件('.$matches[1].')' : $val['title'];
 	?>
 	<form action="widgets.php?action=setwg&wg=custom_text" method="post">
-	<div class="widget-line" id="<?php echo $key; ?>">
-		<div class="widget-top">
+	<div class=panel panel-default" id="<?php echo $key; ?>">
+		<div class="panel-heading">
 			<li class="widget-title"><?php echo $custom_wg_title; ?></li>
 			<li class="widget-act-add"></li>
 			<li class="widget-act-del"></li>
@@ -200,7 +248,7 @@
 	</form>
 	<?php endforeach;?>
 	<form action="widgets.php?action=setwg&wg=custom_text" method="post">
-	<div class="wg_line2"><a href="javascript:displayToggle('custom_text_new', 2);">自定义一个新的组件+</a></div>
+	<div class="wg_line2"><a href="javascript:displayToggle('custom_text_new', 2);" class="btn btn-primary">自定义一个新的组件 +</a></div>
 	<div id="custom_text_new">
 		<li>组件名</li>
 		<li><input type="text" class="input" name="new_title" style="width:384px;" value="" /></li>
@@ -211,7 +259,7 @@
 	</form>
 </div>
 <form action="widgets.php?action=compages" method="post">
-<div id="adm_widget_box">
+<div id="adm_widget_box" class="col-md-6">
 <?php if($tpl_sidenum > 1):?>
 <p>
 <select id="wg_select">
@@ -235,14 +283,16 @@ if($i == $wgNum):
 		$title = '未命名组件('.$matches[1].')';
 	}	
 	?>
-	<li class="sortableitem" id="em_<?php echo $widget; ?>">
-	<input type="hidden" name="widgets[]" value="<?php echo $widget; ?>" />
-	<?php 
-	if ($flg){
-		echo $title;
-	}else{
-		echo $widgetTitle[$widget];
-	}?>
+	<li class="sortableitem panel panel-default" id="em_<?php echo $widget; ?>">
+        <div class="panel-heading">
+            <?php
+            if ($flg){
+                echo $title;
+            }else{
+                echo $widgetTitle[$widget];
+            }?>
+        </div>
+        <input type="hidden" name="widgets[]" value="<?php echo $widget; ?>" />
 	</li>
 <?php endforeach;?>
 </ul>
@@ -292,5 +342,9 @@ $(document).ready(function(){
 		window.location = "widgets.php?wg="+$(this).val();
 	});
 	$("#menu_widget").addClass('sidebarsubmenu1');
+    /*new func*/
+    $(document).on('click','.widget-act-edit',function(){
+        $(this).parent().siblings('.panel-body').toggleClass('widget-control-show');
+    });
 });
 </script>

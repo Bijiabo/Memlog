@@ -1,15 +1,18 @@
 <?php if(!defined('EMLOG_ROOT')) {exit('error!');}?>
 <div class=containertitle><b>评论管理</b>
-<?php if(isset($_GET['active_del'])):?><span class="actived">删除评论成功</span><?php endif;?>
-<?php if(isset($_GET['active_show'])):?><span class="actived">审核评论成功</span><?php endif;?>
-<?php if(isset($_GET['active_hide'])):?><span class="actived">隐藏评论成功</span><?php endif;?>
-<?php if(isset($_GET['active_edit'])):?><span class="actived">修改评论成功</span><?php endif;?>
-<?php if(isset($_GET['active_rep'])):?><span class="actived">回复评论成功</span><?php endif;?>
-<?php if(isset($_GET['error_a'])):?><span class="error">请选择要执行操作的评论</span><?php endif;?>
-<?php if(isset($_GET['error_b'])):?><span class="error">请选择要执行的操作</span><?php endif;?>
-<?php if(isset($_GET['error_c'])):?><span class="error">回复内容不能为空</span><?php endif;?>
-<?php if(isset($_GET['error_d'])):?><span class="error">内容过长</span><?php endif;?>
-<?php if(isset($_GET['error_e'])):?><span class="error">评论内容不能为空</span><?php endif;?>
+    <span id="msg_2">
+        有<?php echo $cmnum; ?>条评论
+    </span>
+<?php if(isset($_GET['active_del'])):?><div class="alert alert-success">删除评论成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_show'])):?><div class="alert alert-success">审核评论成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_hide'])):?><div class="alert alert-success">隐藏评论成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_edit'])):?><div class="alert alert-success">修改评论成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_rep'])):?><div class="alert alert-success">回复评论成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_a'])):?><div class="alert alert-warning">请选择要执行操作的评论<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_b'])):?><div class="alert alert-warning">请选择要执行的操作<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_c'])):?><div class="alert alert-warning">回复内容不能为空<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_d'])):?><div class="alert alert-warning">内容过长<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_e'])):?><div class="alert alert-warning">评论内容不能为空<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
 </div>
 <div class=line></div>
 <?php if ($hideCommNum > 0) : 
@@ -58,7 +61,7 @@ if ($hidecmnum > 0) echo '('.$hidecmnum.')';
         <td width="19"><input type="checkbox" value="<?php echo $value['cid']; ?>" name="com[]" class="ids" /></td>
         <td width="350"><a href="comment.php?action=reply_comment&amp;cid=<?php echo $value['cid']; ?>" title="<?php echo $value['content']; ?>"><?php echo $sub_content; ?></a> 	<?php echo $ishide; ?>
         <br /><?php echo $value['date']; ?>
-		<span style="display:none; margin-left:8px;">    
+		<span style="display:none; margin-left:8px;">
             <a href="javascript: em_confirm(<?php echo $value['cid']; ?>, 'comment', '<?php echo LoginAuth::genToken(); ?>');" class="care">删除</a>
 		<?php if($value['hide'] == 'y'):?>
 		<a href="comment.php?action=show&amp;id=<?php echo $value['cid']; ?>">审核</a>
@@ -80,13 +83,15 @@ if ($hidecmnum > 0) echo '('.$hidecmnum.')';
   </table>
 	<div class="list_footer">
 <!--	<a href="javascript:void(0);" id="select_all">全选</a>-->
-    选中项：
-    <a href="javascript:commentact('del');" class="btn btn-default btn-sm">删除</a>
-	<a href="javascript:commentact('hide');" class="btn btn-default btn-sm">隐藏</a>
-	<a href="javascript:commentact('pub');" class="btn btn-default btn-sm">审核</a>
-	<input name="operate" id="operate" value="" type="hidden" />
+        选中项：
+        <a href="javascript:commentact('del');" class="btn btn-default btn-sm">删除</a>
+        <a href="javascript:commentact('hide');" class="btn btn-default btn-sm">隐藏</a>
+        <a href="javascript:commentact('pub');" class="btn btn-default btn-sm">审核</a>
+        <input name="operate" id="operate" value="" type="hidden" />
 	</div>
-    <div class="page"><?php echo $pageurl; ?> (有<?php echo $cmnum; ?>条评论)</div> 
+    <ul class="pagination">
+        <?php echo $pageurl; ?>
+    </ul>
 </form>
 <script>
 $(document).ready(function(){
