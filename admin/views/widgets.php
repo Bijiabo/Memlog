@@ -1,8 +1,9 @@
 <?php if(!defined('EMLOG_ROOT')) {exit('error!');}?>
-<script type="text/javascript" src="../include/lib/js/jquery/plugin-interface.js"></script>
+<!--<script type="text/javascript" src="../include/lib/js/jquery/plugin-interface.js"></script>-->
 <script>setTimeout(hideActived,2600);</script>
-<div class=containertitle><b>侧边栏组件管理</b>
-<?php if(isset($_GET['activated'])):?><span class="actived">设置保存成功</span><?php endif;?></div>
+<div class=containertitle>
+    <b>侧边栏组件管理</b>
+<?php if(isset($_GET['activated'])):?><div class="alert alert-success">设置保存成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?></div>
 <div class=line></div>
 <div class="widgetpage">
 <div id="adm_widget_list" class="col-md-4">
@@ -12,7 +13,7 @@
                 <span class="widget-act-edit widget-title">个人资料</span>
                 <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
                 <span class="widget-act-add fa fa-plus pull-right"></span>
-                <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+                <span class="widget-act-del fa fa-minus pull-right"></span>
             </div>
             <div class="panel-body form-group widget-control">
                 <input type="text" name="title" value="<?php echo $customWgTitle['blogger']; ?>" class="form-control"/>
@@ -26,7 +27,7 @@
 			<span class="widget-act-edit widget-title">日历</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body form-group widget-control">
             <input type="text" name="title" value="<?php echo $customWgTitle['calendar']; ?>" class="form-control"/>
@@ -40,7 +41,7 @@
 			<span class="widget-act-edit widget-title">最新微语</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body widget-control">
             <div class="form-group margin0">
@@ -63,7 +64,7 @@
 			<span class="widget-act-edit widget-title">标签</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body form-group widget-control">
 			<input type="text" name="title" value="<?php echo $customWgTitle['tag']; ?>" class="form-control"/>
@@ -77,7 +78,7 @@
 			<span class="widget-act-edit widget-title">分类</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body form-group widget-control">
 			<input type="text" name="title" value="<?php echo $customWgTitle['sort']; ?>" class="form-control"/>
@@ -91,7 +92,7 @@
 			<span class="widget-act-edit widget-title">存档</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body form-group widget-control">
 			<input type="text" name="title" value="<?php echo $customWgTitle['archive']; ?>" class="form-control"/>
@@ -105,7 +106,7 @@
 			<span class="widget-act-edit widget-title">最新评论</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body widget-control">
             <div class="form-group margin0">
@@ -132,7 +133,7 @@
 			<span class="widget-act-edit widget-title">最新文章</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body widget-control">
             <div class="form-group margin0">
@@ -155,7 +156,7 @@
 			<span class="widget-act-edit widget-title">热门文章</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body widget-control">
             <div class="form-group margin0">
@@ -178,7 +179,7 @@
 			<span class="widget-act-edit widget-title">随机文章</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body widget-control">
             <div class="form-group margin0">
@@ -201,7 +202,7 @@
 			<span class="widget-act-edit widget-title">链接</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body form-group widget-control">
 			<input type="text" name="title" value="<?php echo $customWgTitle['link']; ?>" class="form-control"/>
@@ -215,7 +216,7 @@
 			<span class="widget-act-edit widget-title">搜索</span>
             <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
             <span class="widget-act-add fa fa-plus pull-right"></span>
-            <span class="widget-act-del glyphicon glyphicon-minus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
 		</div>
 		<div class="panel-body form-group widget-control">
             <input type="text" name="title" value="<?php echo $customWgTitle['search']; ?>" class="form-control"/>
@@ -224,39 +225,65 @@
 	</div>
 	</form>
 	<?php
-	foreach ($custom_widget as $key=>$val): 
+	foreach ($custom_widget as $key=>$val):
 	preg_match("/^custom_wg_(\d+)/", $key, $matches);
 	$custom_wg_title = empty($val['title']) ? '未命名组件('.$matches[1].')' : $val['title'];
 	?>
-	<form action="widgets.php?action=setwg&wg=custom_text" method="post">
-	<div class=panel panel-default" id="<?php echo $key; ?>">
+	<form action="widgets.php?action=setwg&wg=custom_text" method="post" class="form-horizontal">
+	<div class="panel panel-default" id="<?php echo $key; ?>">
 		<div class="panel-heading">
-			<li class="widget-title"><?php echo $custom_wg_title; ?></li>
-			<li class="widget-act-add"></li>
-			<li class="widget-act-del"></li>
+			<span class="widget-act-edit widget-title"><?php echo $custom_wg_title; ?></span>
+            <span class="widget-act-edit widget-act-edit-btn fa fa-pencil"></span>
+            <span class="widget-act-add fa fa-plus pull-right"></span>
+            <span class="widget-act-del fa fa-minus pull-right"></span>
+            <span class="pull-right">
+                <a href="widgets.php?action=setwg&wg=custom_text&rmwg=<?php echo $key; ?>" class="fa fa-trash-o ani widget-delete"></a>
+            </span>
 		</div>
-		<div class="widget-control">
-			<li>
-			<input type="hidden" name="custom_wg_id" value="<?php echo $key; ?>" />
-			<input type="text" name="title" style="width:345px;" value="<?php echo $val['title']; ?>" />
-			</li>
-			<li><textarea name="content" rows="8" style="width:345px;overflow:auto;"><?php echo $val['content']; ?></textarea></li>
-			<li><input type="submit" name="" value="更改" />
-			<span style="margin-left:235px;"><a href="widgets.php?action=setwg&wg=custom_text&rmwg=<?php echo $key; ?>">删除该组件</a></span></li>
+		<div class="panel-body widget-control">
+            <div class="form-group margin0">
+                <label for="title">标题</label>
+                <input type="text" name="title" value="<?php echo $val['title']; ?>" class="form-control"/>
+            </div>
+            <div class="form-group margin0">
+                <label for="index_randlognum">内容</label>
+                <textarea name="content" rows="8" class="form-control"><?php echo $val['content']; ?></textarea>
+            </div>
+            <div class="form-group margin0">
+                <input type="submit" name="" value="更改" class="btn btn-primary" />
+            </div>
 		</div>
 	</div>
 	</form>
 	<?php endforeach;?>
-	<form action="widgets.php?action=setwg&wg=custom_text" method="post">
-	<div class="wg_line2"><a href="javascript:displayToggle('custom_text_new', 2);" class="btn btn-primary">自定义一个新的组件 +</a></div>
-	<div id="custom_text_new">
-		<li>组件名</li>
-		<li><input type="text" class="input" name="new_title" style="width:384px;" value="" /></li>
-		<li>内容 （支持html）</li>
-		<li><textarea name="new_content" class="textarea" rows="10" style="width:380px;overflow:auto;"></textarea></li>
-		<li><input type="submit" name="" value="添加组件"  /></li>
-	</div>
-	</form>
+
+	<div class="wg_line2"><a href="javascript:();" class="btn btn-primary" data-toggle="modal" data-target="#newWidget">自定义一个新的组件 +</a></div>
+        <div class="modal fade" id="newWidget" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="widgets.php?action=setwg&wg=custom_text" method="post" role="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">自定义新组件</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="new_title">组件名</label>
+                            <input type="text" class="form-control" name="new_title" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="new_content">内容<i>支持html</i></label>
+                            <textarea name="new_content" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">添加组件</button>
+                    </div>
+                    </form>
+                </div><!-- content -->
+            </div><!-- dialog -->
+        </div><!-- modal -->
 </div>
 <form action="widgets.php?action=compages" method="post">
 <div id="adm_widget_box" class="col-md-6">
@@ -273,7 +300,7 @@ if($i == $wgNum):
 </select>
 </p>
 <?php endif;?>
-<ul>
+<ul id="adm_widget_box_ul">
 <?php 
 	foreach ($widgets as $widget):
 	$flg = strpos($widget, 'custom_wg_') === 0 ? true : false;//是否为自定义组件
@@ -297,13 +324,16 @@ if($i == $wgNum):
 <?php endforeach;?>
 </ul>
 <input type="hidden" name="wgnum" id="wgnum" value="<?php echo $wgNum; ?>" />
-<div style="margin:20px 40px;"><input type="submit" value="保存组件排序" class="button" /></div>
+<div style="margin:20px 40px;">
+    <input type="submit" value="保存组件排序" class="btn btn-primary" />
+</div>
 <div style="margin:10px 40px;"><a href="javascript: em_confirm(0, 'reset_widget', '<?php echo LoginAuth::genToken(); ?>');">恢复组件设置到初始安装状态</a></div>
 </div>
 </form>
 </div>
+<script src="./views/js/jquery-ui-1.10.4.custom.min.js"></script>
 <script>
-$(document).ready(function(){
+$(function() {
 	$("#custom_text_new").css('display', $.cookie('em_custom_text_new') ? $.cookie('em_custom_text_new') : 'none');
 	var widgets = $(".sortableitem").map(function(){return $(this).attr("id");});
 	$.each(widgets,function(i,widget_id){
@@ -320,7 +350,7 @@ $(document).ready(function(){
 		var wgnum = $("#wgnum").val();
 		var title = $(this).prevAll(".widget-title").html();
 		var widget_id = $(this).parent().parent().attr("id");
-		var widget_element = "<li class=\"sortableitem\" id=\"em_"+widget_id+"\">"+title+"<input type=\"hidden\" name=\"widgets[]\" value=\""+widget_id+"\" /></li>";
+		var widget_element = '<li class="sortableitem panel panel-default" id="em_'+widget_id+'"><div class="panel-heading">'+title+'</div><input type="hidden" name="widgets[]" value="'+widget_id+'" /></li>';
 		$("#adm_widget_box ul").append(widget_element);
 		$(this).hide();
 		$(this).next(".widget-act-del").show();
@@ -332,19 +362,16 @@ $(document).ready(function(){
 		$(this).hide();
 		$(this).prev(".widget-act-add").show();
 	});
-	//move
-	$("#adm_widget_box ul").mouseover(function(){
-		$("#adm_widget_box ul").Sortable({
-			accept: 'sortableitem'
-		});
-	});
-	$("#wg_select").change(function(){
-		window.location = "widgets.php?wg="+$(this).val();
-	});
-	$("#menu_widget").addClass('sidebarsubmenu1');
     /*new func*/
     $(document).on('click','.widget-act-edit',function(){
         $(this).parent().siblings('.panel-body').toggleClass('widget-control-show');
     });
-});
+    /*
+    * move
+    * */
+    $( "#adm_widget_box_ul" ).sortable({
+        placeholder: "adm_widget_box_ul-highlight"
+    });
+    $( "#adm_widget_box_ul" ).disableSelection();
+ });
 </script>

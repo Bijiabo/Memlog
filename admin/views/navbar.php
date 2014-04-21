@@ -13,7 +13,7 @@
 </div>
 <div class=line></div>
 <form action="navbar.php?action=taxis" method="post">
-  <table width="100%" id="adm_navi_list" class="item_list">
+  <table width="100%" id="adm_navi_list" class="table table-striped table-hover">
     <thead>
       <tr>
 	  	<th width="50"><b>序号</b></th>
@@ -53,7 +53,7 @@
     
 	?>  
       <tr>
-		<td><input class="num_input" name="navi[<?php echo $value['id']; ?>]" value="<?php echo $value['taxis']; ?>" maxlength="4" /></td>
+		<td><input class="form-control" name="navi[<?php echo $value['id']; ?>]" value="<?php echo $value['taxis']; ?>" maxlength="4" /></td>
 		<td><a href="navbar.php?action=mod&amp;navid=<?php echo $value['id']; ?>" title="编辑导航"><?php echo $value['naviname']; ?></a></td>
 		<td class="tdcenter"><?php echo $value['type_name'];?></td>
 		<td class="tdcenter">
@@ -108,7 +108,12 @@
 	<?php endif;?>
     </tbody>
   </table>
-  <div class="list_footer"><input type="submit" value="改变排序" class="button" /></div>
+  <div class="list_footer">
+      <input type="submit" value="改变排序" class="btn btn-primary" />
+      <button class="btn btn-default">添加自定义导航</button>
+      <button class="btn btn-default">添加分类到导航</button>
+      <button class="btn btn-default">添加页面到导航</button>
+  </div>
 </form>
 <div id="navi_add">
 <form action="navbar.php?action=add" method="post" name="navi" id="navi">
