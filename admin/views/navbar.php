@@ -1,15 +1,15 @@
 <?php if(!defined('EMLOG_ROOT')) {exit('error!');} ?>
 <div class=containertitle><b>导航管理</b>
-<?php if(isset($_GET['active_taxis'])):?><span class="actived">排序更新成功</span><?php endif;?>
-<?php if(isset($_GET['active_del'])):?><span class="actived">删除导航成功</span><?php endif;?>
-<?php if(isset($_GET['active_edit'])):?><span class="actived">修改导航成功</span><?php endif;?>
-<?php if(isset($_GET['active_add'])):?><span class="actived">添加导航成功</span><?php endif;?>
-<?php if(isset($_GET['error_a'])):?><span class="error">导航名称和地址不能为空</span><?php endif;?>
-<?php if(isset($_GET['error_b'])):?><span class="error">没有可排序的导航</span><?php endif;?>
-<?php if(isset($_GET['error_c'])):?><span class="error">默认导航不能删除</span><?php endif;?>
-<?php if(isset($_GET['error_d'])):?><span class="error">请选择要添加的分类</span><?php endif;?>
-<?php if(isset($_GET['error_e'])):?><span class="error">请选择要添加的页面</span><?php endif;?>
-<?php if(isset($_GET['error_f'])):?><span class="error">导航地址格式错误(需包含http等前缀)</span><?php endif;?>
+<?php if(isset($_GET['active_taxis'])):?><div class="alert alert-success">排序更新成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_del'])):?><div class="alert alert-success">删除导航成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_edit'])):?><div class="alert alert-success">修改导航成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_add'])):?><div class="alert alert-success">添加导航成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_a'])):?><div class="alert alert-warning">导航名称和地址不能为空<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_b'])):?><div class="alert alert-warning">没有可排序的导航<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_c'])):?><div class="alert alert-warning">默认导航不能删除<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_d'])):?><div class="alert alert-warning">请选择要添加的分类<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_e'])):?><div class="alert alert-warning">请选择要添加的页面<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_f'])):?><div class="alert alert-warning">导航地址格式错误(需包含http等前缀)<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
 </div>
 <div class=line></div>
 <form action="navbar.php?action=taxis" method="post">
@@ -109,95 +109,153 @@
     </tbody>
   </table>
   <div class="list_footer">
-      <input type="submit" value="改变排序" class="btn btn-primary" />
-      <button class="btn btn-default">添加自定义导航</button>
-      <button class="btn btn-default">添加分类到导航</button>
-      <button class="btn btn-default">添加页面到导航</button>
+      <input type="submit" value="改变排序" class="btn btn-primary btn-sm" />
+      <a class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-nav">添加自定义导航</a>
+      <a class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-sort">添加分类到导航</a>
+      <a class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-page">添加页面到导航</a>
   </div>
 </form>
-<div id="navi_add">
-<form action="navbar.php?action=add" method="post" name="navi" id="navi">
-<div>
-	<h1 onclick="displayToggle('navi_add_custom', 2);">添加自定义导航+</h1>
-	<ul id="navi_add_custom">
-	<li><input maxlength="4" style="width:30px;" name="taxis" /> 序号</li>
-	<li><input maxlength="200" style="width:100px;" name="naviname" /> 导航名称<span class="required">*</sapn></li>
-	<li>
-	<input maxlength="200" style="width:168px;" name="url" id="url" /> 地址(带http)<span class="required">*</sapn></li>
-    <li>
-            <select name="pid" id="pid" class="input">
-                <option value="0">无</option>
-                <?php
-                    foreach($navis as $key=>$value):
-                        if($value['type'] != Navi_Model::navitype_custom || $value['pid'] != 0) {
-                            continue;
-                        }
-                ?>
-                <option value="<?php echo $value['id']; ?>"><?php echo $value['naviname']; ?></option>
-                <?php endforeach; ?>
-            </select>
-            父导航
-    </li>
-    <li>在新窗口打开<input type="checkbox" style="vertical-align:middle;" value="y" name="newtab" /></li>
-	<li><input type="submit" name="" value="添加"  /></li>
-	</ul>
+
+<!-- modal add-nav -->
+<div class="modal fade" id="add-nav" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="navbar.php?action=add" method="post" name="navi" id="navi" role="form">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">添加自定义导航</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="taxis">序号</label>
+                    <input maxlength="4" name="taxis" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="naviname">导航名称</label>
+                    <input maxlength="200" name="naviname" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="url">地址(带http)</label>
+                    <input maxlength="200" name="url" id="url" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="pid">父导航</label>
+                    <select name="pid" id="pid" class="form-control">
+                        <option value="0">无</option>
+                        <?php
+                        foreach($navis as $key=>$value):
+                            if($value['type'] != Navi_Model::navitype_custom || $value['pid'] != 0) {
+                                continue;
+                            }
+                            ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['naviname']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"  value="y" name="newtab" class="form-control"/>在新窗口打开
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
-</form>
-<form action="navbar.php?action=add_sort" method="post" name="navi" id="navi">
-<div>
-	<h1 onclick="displayToggle('navi_add_sort', 2);">添加分类到导航+</h1>
-	<ul id="navi_add_sort">
-	<?php 
-	if($sorts):
-    foreach($sorts as $key=>$value):
-	if ($value['pid'] != 0) {
-		continue;
-	}
-    ?>
-	<li>
-        <input type="checkbox" style="vertical-align:middle;" name="sort_ids[]" value="<?php echo $value['sid']; ?>" class="ids" />
-		<?php echo $value['sortname']; ?>
-	</li>
-	<?php
-		$children = $value['children'];
-		foreach ($children as $key):
-		$value = $sorts[$key];
-	?>
-    <li>
-        &nbsp; &nbsp; &nbsp;  <input type="checkbox" style="vertical-align:middle;" name="sort_ids[]" value="<?php echo $value['sid']; ?>" class="ids" />
-        <?php echo $value['sortname']; ?>
-	</li>
-	<?php 
-        endforeach;
-   endforeach;
-   ?>
-	<li><input type="submit" name="" value="添加"  /></li>
-	<?php else:?>
-	<li>还没有分类，<a href="sort.php">新建分类</a></li>
-	<?php endif;?> 
-	</ul>
+<!-- modal add-sort -->
+<div class="modal fade" id="add-sort" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;">
+        <div class="modal-content">
+            <form action="navbar.php?action=add_sort" method="post" name="sort" id="sort" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加分类到导航</h4>
+                </div>
+                <div class="modal-body">
+                    <?php
+                    if($sorts):
+                        foreach($sorts as $key=>$value):
+                            if ($value['pid'] != 0) {
+                                continue;
+                            }
+                            ?>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" style="vertical-align:middle;" name="sort_ids[]" value="<?php echo $value['sid']; ?>" class="ids" />
+                                    <?php echo $value['sortname']; ?>
+                                </label>
+                            </div>
+                            <?php
+                            $children = $value['children'];
+                            foreach ($children as $key):
+                                $value = $sorts[$key];
+                                ?>
+                                <div class="checkbox">
+                                    <label>
+                                    <span style="color: #D1D1D1;">|---  </span><input type="checkbox" name="sort_ids[]" value="<?php echo $value['sid']; ?>"/>
+                                    <?php echo $value['sortname']; ?>
+                                    </label>
+                                </div>
+                            <?php
+                            endforeach;
+                        endforeach;
+                        ?>
+                    <?php else:?>
+                        <div class="checkbox">
+                            <label>
+                                还没有分类，<a href="sort.php">新建分类</a>
+                            </label>
+                        </div>
+                    <?php endif;?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-</form>
-<form action="navbar.php?action=add_page" method="post" name="navi" id="navi">
-<div>
-	<h1 onclick="displayToggle('navi_add_page', 2);">添加页面到导航+</h1>
-	<ul id="navi_add_page">
-	<?php 
-	if($pages):
-	foreach($pages as $key=>$value): 
-	?>
-	<li>
-        <input type="checkbox" style="vertical-align:middle;" name="pages[<?php echo $value['gid']; ?>]" value="<?php echo $value['title']; ?>" class="ids" />
-		<?php echo $value['title']; ?>
-	</li>
-	<?php endforeach;?>
-	<li><input type="submit" name="" value="添加"  /></li>
-	<?php else:?>
-	<li>还没页面，<a href="page.php">新建页面</a></li>
-	<?php endif;?> 
-	</ul>
-</div>
-</form>
+<!-- modal add-page -->
+<div class="modal fade" id="add-page" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="navbar.php?action=add_page" method="post" name="page" id="page" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加页面到导航</h4>
+                </div>
+                <div class="modal-body">
+                    <?php
+                    if($pages):
+                        foreach($pages as $key=>$value):
+                            ?>
+                            <div class="checkbox">
+                                <label>
+                                <input type="checkbox" style="vertical-align:middle;" name="pages[<?php echo $value['gid']; ?>]" value="<?php echo $value['title']; ?>" class="ids" />
+                                <?php echo $value['title']; ?>
+                                </label>
+                            </div>
+                        <?php endforeach;?>
+                    <?php else:?>
+                    <div class="checkbox">
+                        <label>
+                        还没页面，<a href="page.php">新建页面</a>
+                        </label>
+                    </div>
+                    <?php endif;?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script>
 $("#navi_add_custom").css('display', $.cookie('em_navi_add_custom') ? $.cookie('em_navi_add_custom') : '');

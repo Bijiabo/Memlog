@@ -1,16 +1,19 @@
 <?php if(!defined('EMLOG_ROOT')) {exit('error!');}?>
-<div class=containertitle><b>页面管理</b>
-<?php if(isset($_GET['active_del'])):?><span class="actived">删除页面成功</span><?php endif;?>
-<?php if(isset($_GET['active_hide_n'])):?><span class="actived">发布页面成功</span><?php endif;?>
-<?php if(isset($_GET['active_hide_y'])):?><span class="actived">禁用页面成功</span><?php endif;?>
-<?php if(isset($_GET['active_pubpage'])):?><span class="actived">页面保存成功</span><?php endif;?>
+<div class=containertitle><b>页面管理</b><span id="msg_2">有<?php echo $pageNum; ?>个页面 <a href="page.php?action=new" class="btn btn-default pull-right">新建页面</a></span>
+<?php if(isset($_GET['active_del'])):?><div class="alert alert-success">删除页面成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_hide_n'])):?><div class="alert alert-success">发布页面成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_hide_y'])):?><div class="alert alert-success">禁用页面成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_pubpage'])):?><div class="alert alert-success">页面保存成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
 </div>
 <div class=line></div>
 <form action="page.php?action=operate_page" method="post" name="form_page" id="form_page">
-  <table width="100%" id="adm_comment_list" class="item_list">
+  <table width="100%" id="adm_comment_list" class="table table-striped table-hover">
   	<thead>
       <tr>
-        <th width="461" colspan="2"><b>标题</b></th>
+        <th width="21">
+            <input type="checkbox" style="margin-bottom: 3px;" id="checkbox_select_all">
+        </th>
+        <th width="441"><b>标题</b></th>
         <th width="140"><b>模板</b></th>
         <th width="50" class="tdcenter"><b>评论</b></th>
         <th width="140"><b>时间</b></th>
@@ -48,20 +51,24 @@
   <input name="operate" id="operate" value="" type="hidden" />
 </form>
 <div class="list_footer">
-<a href="javascript:void(0);" id="select_all">全选</a> 选中项：
-<a href="javascript:pageact('del');" class="care">删除</a> | 
-<a href="javascript:pageact('hide');">转为草稿</a> | 
-<a href="javascript:pageact('pub');">发布</a>
+    选中项：
+    <a href="javascript:pageact('del');" class="btn btn-default btn-sm">删除</a>
+    <a href="javascript:pageact('hide');" class="btn btn-default btn-sm">转为草稿</a>
+    <a href="javascript:pageact('pub');" class="btn btn-default btn-sm">发布</a>
 </div>
-<div style="margin:20px 0px 0px 0px;"><a href="page.php?action=new">新建页面+</a></div>
-<div class="page"><?php echo $pageurl; ?> (有<?php echo $pageNum; ?>个页面)</div>
+<div class="page">
+    <ul class="pagination">
+        <?php echo $pageurl; ?>
+    </ul>
+</div>
 <script>
 $(document).ready(function(){
 	$("#adm_comment_list tbody tr:odd").addClass("tralt_b");
 	$("#adm_comment_list tbody tr")
 		.mouseover(function(){$(this).addClass("trover")})
 		.mouseout(function(){$(this).removeClass("trover")});
-	$("#select_all").toggle(function () {$(".ids").attr("checked", "checked");},function () {$(".ids").removeAttr("checked");});
+//	$("#select_all").toggle(function () {$(".ids").attr("checked", "checked");},function () {$(".ids").removeAttr("checked");});
+    $("#checkbox_select_all").click(function () {$(".ids").click();});
 });
 setTimeout(hideActived,2600);
 function pageact(act){

@@ -1,18 +1,18 @@
 <?php if(!defined('EMLOG_ROOT')) {exit('error!');}?>
-<div class=containertitle><b>用户管理</b>
-<?php if(isset($_GET['active_del'])):?><span class="actived">删除成功</span><?php endif;?>
-<?php if(isset($_GET['active_update'])):?><span class="actived">修改用户资料成功</span><?php endif;?>
-<?php if(isset($_GET['active_add'])):?><span class="actived">添加用户成功</span><?php endif;?>
-<?php if(isset($_GET['error_login'])):?><span class="error">用户名不能为空</span><?php endif;?>
-<?php if(isset($_GET['error_exist'])):?><span class="error">该用户名已存在</span><?php endif;?>
-<?php if(isset($_GET['error_pwd_len'])):?><span class="error">密码长度不得小于6位</span><?php endif;?>
-<?php if(isset($_GET['error_pwd2'])):?><span class="error">两次输入密码不一致</span><?php endif;?>
-<?php if(isset($_GET['error_del_a'])):?><span class="error">不能删除创始人</span><?php endif;?>
-<?php if(isset($_GET['error_del_b'])):?><span class="error">不能修改创始人信息</span><?php endif;?>
+<div class=containertitle><b>用户管理</b><span id="msg_2">有<?php echo $usernum; ?>位用户</span><a class="btn btn-primary pull-right" href="javascript:();"  data-toggle="modal" data-target="#add-user">添加用户 +</a>
+<?php if(isset($_GET['active_del'])):?><div class="alert alert-success">删除成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_update'])):?><div class="alert alert-success">修改用户资料成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_add'])):?><div class="alert alert-success">添加用户成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_login'])):?><div class="alert alert-warning">用户名不能为空<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_exist'])):?><div class="alert alert-warning">该用户名已存在<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_pwd_len'])):?><div class="alert alert-warning">密码长度不得小于6位<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_pwd2'])):?><div class="alert alert-warning">两次输入密码不一致<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_del_a'])):?><div class="alert alert-warning">不能删除创始人<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_del_b'])):?><div class="alert alert-warning">不能修改创始人信息<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
 </div>
 <div class=line></div>
 <form action="comment.php?action=admin_all_coms" method="post" name="form" id="form">
-  <table width="100%" id="adm_comment_list" class="item_list">
+  <table width="100%" id="adm_comment_list" class="table table-striped table-hover">
   	<thead>
       <tr>
         <th width="60"></th>
@@ -29,7 +29,7 @@
 		$avatar = empty($user_cache[$val['uid']]['avatar']) ? './views/images/avatar.jpg' : '../' . $user_cache[$val['uid']]['avatar'];
 	?>
      <tr>
-        <td style="padding:3px; text-align:center;"><img src="<?php echo $avatar; ?>" height="40" width="40" /></td>
+        <td style="padding:6px 3px 3px 3px; text-align:center;"><img src="<?php echo $avatar; ?>" height="40" width="40" /></td>
 		<td>
 		<?php echo empty($val['name']) ? $val['login'] : $val['name']; ?><br />
 		<?php echo $val['role'] == ROLE_ADMIN ? $val['uid'] == 1 ? '创始人':'管理员' : '作者'; ?>
@@ -53,29 +53,57 @@
 	</tbody>
   </table>
 </form>
-<div class="page"><?php echo $pageurl; ?> (有<?php echo $usernum; ?>位用户)</div> 
-<form action="user.php?action=new" method="post">
-<div style="margin:30px 0px 10px 0px;"><a href="javascript:displayToggle('user_new', 2);">添加用户+</a></div>
-<div id="user_new" class="item_edit">
-    <li>
-	<select name="role" id="role" class="input">
-		<option value="writer">作者（投稿人）</option>
-		<option value="admin">管理员</option>
-	</select>
-	</li>
-	<li><input name="login" type="text" id="login" value="" style="width:180px;" class="input" /> 用户名</li>
-	<li><input name="password" type="password" id="password" value="" style="width:180px;" class="input" /> 密码 (大于6位)</li>
-	<li><input name="password2" type="password" id="password2" value="" style="width:180px;" class="input" /> 重复密码</li>
-	<li id="ischeck">
-	<select name="ischeck" class="input">
-        <option value="n">文章不需要审核</option>
-		<option value="y">文章需要审核</option>
-	</select>
-	</li>
-    <input name="token" id="token" value="<?php echo LoginAuth::genToken(); ?>" type="hidden" />
-	<li><input type="submit" name="" value="添加用户" class="button" /></li>
+<div class="list_footer"></div>
+<div class="modal fade" id="add-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="user.php?action=new" method="post" name="link" id="link" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="role">用户组</label>
+                        <select name="role" id="role" class="form-control">
+                            <option value="writer">作者（投稿人）</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="login">用户名</label>
+                        <input class="form-control" name="login" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码 (大于6位)</label>
+                        <input class="form-control" name="password" type="password"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">密码 (大于6位)</label>
+                        <input class="form-control" name="password2" type="password"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="ischeck">审核</label>
+                        <select name="ischeck" class="form-control">
+                            <option value="n">文章不需要审核</option>
+                            <option value="y">文章需要审核</option>
+                        </select>
+                    </div>
+                    <input name="token" id="token" value="<?php echo LoginAuth::genToken(); ?>" type="hidden" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">添加用户</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-</form>
+<div class="page">
+    <ul class="pagination">
+        <?php echo $pageurl; ?>
+    </ul>
+</div>
 <script>
 $("#user_new").css('display', $.cookie('em_user_new') ? $.cookie('em_user_new') : 'none');
 $(document).ready(function(){

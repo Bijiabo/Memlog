@@ -272,7 +272,7 @@
                             <input type="text" class="form-control" name="new_title" value="" />
                         </div>
                         <div class="form-group">
-                            <label for="new_content">内容<i>支持html</i></label>
+                            <label for="new_content">内容 <i>（支持html）</i></label>
                             <textarea name="new_content" class="form-control"></textarea>
                         </div>
                     </div>

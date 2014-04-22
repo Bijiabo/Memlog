@@ -6,7 +6,7 @@
     transition: all 0.2s ease-out;
 }
 #main{
-    margin-top: 70px;
+    padding-top: 70px;
 }
 .text-blue{color: #15c;}
 .text-white{color: #ffffff;}
@@ -30,17 +30,20 @@
     margin-top: 6px;
 }
 #headerbar{
-    background: white;
-}
-#headerbar .dropdown-menu>li>a {
-    padding: 3px 15px;
-    position: relative;
+
 }
 .containertitle{
     font-size: 20px;
     color: #555;
     margin: 0 0 20px 0;
     font-weight: normal;
+}
+.containertitle .btn.pull-right{
+    margin-left: 6px;
+}
+.containertitle .tooltip-inner{
+    text-align: left;
+    line-height: 20px;
 }
 .containertitle>b{
     font-weight: normal;
@@ -190,8 +193,9 @@
 .adm_widget_box_ul-highlight{
     height: 49px;
     background: #EEEEEE;
-    margin-bottom: 20px;
+    margin-bottom: 23px;
     border-radius: 3px;
+    border:1px solid #eeeeee;
 }
 .ui-sortable-helper .panel-heading{
     color: #DD4B39;
@@ -211,10 +215,10 @@
     text-decoration: none;
 }
 /*navbar*/
-#adm_navi_list td{
+#adm_navi_list td,#adm_link_list td{
     padding-top: 13px;
 }
-#adm_navi_list td:first-child{
+#adm_navi_list td:first-child,#adm_link_list td:first-child{
     padding-top: 8px;
 }
 /*footer*/

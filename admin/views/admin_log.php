@@ -101,10 +101,10 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
   <table width="100%" id="adm_log_list" class="table table-striped table-hover" style="margin-top: 20px;">
   <thead>
       <tr>
-        <th width="21" colspan="1">
+        <th width="21">
             <input type="checkbox" style="margin-bottom: 3px;" id="checkbox_select_all">
         </th>
-        <th width="490" colspan="1">标题</th>
+        <th width="490">标题</th>
 		<?php if ($pid != 'draft'): ?>
 		<th width="40" class="tdcenter">查看</th>
 		<?php endif; ?>

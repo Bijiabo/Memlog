@@ -1,14 +1,15 @@
 <?php if(!defined('EMLOG_ROOT')) {exit('error!');}?>
-<div class=containertitle><b>插件管理</b><div id="msg"></div>
-<?php if(isset($_GET['activate_install'])):?><span class="actived">插件上传成功，请激活使用</span><?php endif;?>
-<?php if(isset($_GET['active'])):?><span class="actived">插件激活成功</span><?php endif;?>
-<?php if(isset($_GET['activate_del'])):?><span class="actived">删除成功</span><?php endif;?>
-<?php if(isset($_GET['active_error'])):?><span class="error">插件激活失败</span><?php endif;?>
-<?php if(isset($_GET['inactive'])):?><span class="actived">插件禁用成功</span><?php endif;?>
-<?php if(isset($_GET['error_a'])):?><span class="error">删除失败，请检查插件文件权限</span><?php endif;?>
+<div class=containertitle><b>插件管理</b>
+    <a href="./plugin.php?action=install" class="btn btn-primary pull-right">安装插件</a>
+<?php if(isset($_GET['activate_install'])):?><div class="alert alert-success">插件上传成功，请激活使用<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active'])):?><div class="alert alert-success">插件激活成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['activate_del'])):?><div class="alert alert-success">删除成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['active_error'])):?><div class="alert alert-warning">插件激活失败<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['inactive'])):?><div class="alert alert-success">插件禁用成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
+<?php if(isset($_GET['error_a'])):?><div class="alert alert-warning">删除失败，请检查插件文件权限<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?>
 </div>
 <div class=line></div>
-  <table width="100%" id="adm_plugin_list" class="item_list">
+  <table width="100%" id="adm_plugin_list" class="table table-striped table-hover">
   <thead>
       <tr>
         <th width="200"></th>
@@ -68,7 +69,6 @@
 	<?php endif;?>
 	</tbody>
   </table>
-<div class="add_plugin"><a href="./plugin.php?action=install">安装插件</a></div>
 <script>
 $("#adm_plugin_list tbody tr:odd").addClass("tralt_b");
 $("#adm_plugin_list tbody tr")

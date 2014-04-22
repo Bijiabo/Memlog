@@ -61,10 +61,10 @@
                                 <a href="admin_log.php">文章管理</a>
                             </li>
                             <?php if (ROLE == ROLE_ADMIN):?>
-                            <li id="menu_tw"><a href="twitter.php">微语</a></li>
-                            <li class="divider"></li>
-                            <li><a href="tag.php">标签</a></li>
-                            <li><a href="sort.php">分类</a></li>
+                                <li id="menu_tw"><a href="twitter.php">微语</a></li>
+                                <li class="divider"></li>
+                                <li><a href="tag.php">标签</a></li>
+                                <li><a href="sort.php">分类</a></li>
                             <?php endif;?>
                         </ul>
                     </li>
@@ -156,4 +156,5 @@ $("#menu_ext").toggle(
 	  }
 );
 var tokenName = '<?php $token_cookie_name = 'EM_TOKENCOOKIE_' . md5(substr(AUTH_KEY, 16, 32) . UID);echo $token_cookie_name;?>';
+var token = '<?php echo LoginAuth::genToken(); ?>';
 </script>
