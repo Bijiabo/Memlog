@@ -32,6 +32,18 @@
 #headerbar{
 
 }
+#headerbar-menubutton{
+    border: 0;
+    padding: 0;
+}
+#headerbar-menubutton:hover,#headerbar-menubutton:focus{
+    background: none;
+}
+@media (max-width: 992px) {
+    #headerbar .nav.navbar-nav.pull-right{
+        float: none!important;
+    }
+}
 .containertitle{
     font-size: 20px;
     color: #555;
@@ -224,4 +236,8 @@
 /*footer*/
 #footer{
     margin-bottom: 20px;
+}
+/*configure*/
+.tab-content .form-group .col-sm-2{
+    margin-bottom: 10px;
 }

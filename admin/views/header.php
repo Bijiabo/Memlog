@@ -26,6 +26,22 @@
 <div id="mainpage">
     <nav id="headerbar" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
+            <div class="navbar-header" style="padding: 6px 0;">
+                <button id="headerbar-menubutton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <!--<span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>-->
+                    <span class="fa fa-bars fa-2x"></span>
+                </button>
+                <a class="navbar-brand" href="./">
+                    <?php
+                    $blog_name = Option::get('blogname');
+                    echo empty($blog_name) ? '我的站点' : subString($blog_name, 0, 24);
+                    ?>
+                </a>
+            </div>
+
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" style="margin: 6px 0;">
                     <li><a href="./">管理首页</a></li>
