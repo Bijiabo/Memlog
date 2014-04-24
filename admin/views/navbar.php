@@ -168,7 +168,7 @@
 </div>
 <!-- modal add-sort -->
 <div class="modal fade" id="add-sort" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 400px;">
+    <div class="modal-dialog" style="width: 400px;margin-left: auto;margin-right: auto;">
         <div class="modal-content">
             <form action="navbar.php?action=add_sort" method="post" name="sort" id="sort" role="form">
                 <div class="modal-header">

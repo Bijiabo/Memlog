@@ -24,17 +24,18 @@
 </head>
 <body>
 <div id="mainpage">
-    <nav id="headerbar" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <nav id="headerbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header" style="padding: 6px 0;">
-                <button id="headerbar-menubutton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button id="headerbar-menubutton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    style="margin-right: 30px;">
                     <!--<span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>-->
-                    <span class="fa fa-bars fa-2x"></span>
+                    <span class="fa fa-bars fa-2x" style="color: rgba(255, 255, 255, 0.92);"></span>
                 </button>
-                <a class="navbar-brand" href="./">
+                <a class="navbar-brand" href="./" style="padding-left: 30px;">
                     <?php
                     $blog_name = Option::get('blogname');
                     echo empty($blog_name) ? '我的站点' : subString($blog_name, 0, 24);
@@ -44,7 +45,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" style="margin: 6px 0;">
-                    <li><a href="./">管理首页</a></li>
+<!--                    <li><a href="./">管理首页</a></li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">内容 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -120,6 +121,7 @@
                             <?php endif;?>
                         </ul>
                     </li>
+                    <!--
                     <?php if (ROLE == ROLE_ADMIN):?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">拓展 <b class="caret"></b></a>
@@ -128,6 +130,7 @@
                             </ul>
                         </li>
                     <?php endif;?>
+                    -->
                 </ul>
                 <ul class="nav navbar-nav pull-right" style="margin: 6px 0;">
                     <li>

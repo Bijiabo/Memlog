@@ -106,8 +106,9 @@ foreach($sorts as $key=>$value):
                         <input maxlength="200" style="width:243px;" class="form-control" name="sortname" id="sortname" />
                     </div>
                     <div class="form-group">
-                        <label for="alias">别名 (用于URL的友好显示)</label>
+                        <label for="alias">别名</label>
                         <input maxlength="200" class="form-control" name="alias" id="alias" />
+                        <span class="help-block">用于URL的友好显示</span>
                     </div>
                     <div class="form-group">
                         <label for="pid">父分类</label>
@@ -124,8 +125,9 @@ foreach($sorts as $key=>$value):
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="template">模板 (用于自定义分类页面模板，对应模板目录下.php文件，默认为log_list.php)</label>
+                        <label for="template">模板</label>
                         <input maxlength="200" class="form-control" name="template" id="template" value="log_list" />
+                        <span class="help-block">用于自定义分类页面模板，对应模板目录下.php文件，默认为log_list.php</span>
                     </div>
                     <div class="form-group">
                         <label for="description">分类描述</label>

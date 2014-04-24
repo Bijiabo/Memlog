@@ -5,8 +5,8 @@
     <b>侧边栏组件管理</b>
 <?php if(isset($_GET['activated'])):?><div class="alert alert-success">设置保存成功<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div><?php endif;?></div>
 <div class=line></div>
-<div class="widgetpage">
-<div id="adm_widget_list" class="col-md-4">
+<div class="widgetpage row">
+<div id="adm_widget_list" class="col-sm-4">
 	<form action="widgets.php?action=setwg&wg=blogger" method="post" role="form" class="form-inline">
         <div class="panel panel-default" id="blogger">
             <div class="panel-heading">
@@ -257,7 +257,7 @@
 	</form>
 	<?php endforeach;?>
 
-	<div class="wg_line2"><a href="javascript:();" class="btn btn-primary" data-toggle="modal" data-target="#newWidget">自定义一个新的组件 +</a></div>
+	<div class="wg_line2" style="margin-bottom: 40px;"><a href="javascript:();" class="btn btn-primary" data-toggle="modal" data-target="#newWidget">自定义一个新的组件 +</a></div>
         <div class="modal fade" id="newWidget" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -285,8 +285,8 @@
             </div><!-- dialog -->
         </div><!-- modal -->
 </div>
+<div id="adm_widget_box" class="col-sm-6">
 <form action="widgets.php?action=compages" method="post">
-<div id="adm_widget_box" class="col-md-6">
 <?php if($tpl_sidenum > 1):?>
 <p>
 <select id="wg_select">
@@ -324,12 +324,12 @@ if($i == $wgNum):
 <?php endforeach;?>
 </ul>
 <input type="hidden" name="wgnum" id="wgnum" value="<?php echo $wgNum; ?>" />
-<div style="margin:20px 40px;">
+<div style="margin:20px 0;">
     <input type="submit" value="保存组件排序" class="btn btn-primary" />
 </div>
-<div style="margin:10px 40px;"><a href="javascript: em_confirm(0, 'reset_widget', '<?php echo LoginAuth::genToken(); ?>');">恢复组件设置到初始安装状态</a></div>
-</div>
+<div style="margin:10px 0;"><a href="javascript: em_confirm(0, 'reset_widget', '<?php echo LoginAuth::genToken(); ?>');">恢复组件设置到初始安装状态</a></div>
 </form>
+</div>
 </div>
 <script src="./views/js/jquery-ui-1.10.4.custom.min.js"></script>
 <script>
